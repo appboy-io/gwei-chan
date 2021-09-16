@@ -1,0 +1,111 @@
+.Main-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .Main-logo {
+      animation: Main-logo-spin 5s linear;
+    }
+
+    .Main-gwei-count {
+      animation: Main-gwei-reveal 1s linear;
+    }
+
+    .Main-talk-bubble {
+        animation-delay: 3s;
+        animation: Main-talk-bubble-prompt 30s infinite linear;
+    }
+}
+
+.Main-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.Main-talk-bubble {
+    margin: 40px;
+    display: inline-block;
+    position: relative;
+    height: auto;
+    width: 200px;
+    background-color: blue;
+}
+
+.talk-bubble-border {
+    border: 8px solid #666;
+}
+
+.talk-text {
+    padding: 1em;
+    text-align: left;
+    line-height: 1.5em;
+}
+
+.talk-text p {
+    font-size: small;
+}
+
+.round {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+}
+
+.tri-right.talk-bubble-border.right-top:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -40px;
+    top: -8px;
+    bottom: auto;
+    border: 32px solid;
+    border-color: #666 transparent transparent transparent;
+}
+
+.tri-right.right-top:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -20px;
+    top: 0px;
+    bottom: auto;
+    border: 20px solid;
+    border-color: blue transparent transparent transparent;
+}
+
+@keyframes Main-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(20deg);
+    }
+}
+
+@keyframes Main-gwei-reveal {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes Main-talk-bubble-prompt {
+    99% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}

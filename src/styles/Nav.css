@@ -1,0 +1,28 @@
+.Nav {
+    width: 100%;
+}
+
+.Nav-main {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.Nav-links {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+.Nav-link {
+    margin: 10px;
+}
+
+.Nav-home-link {
+    margin: 10px;
+}
+
+.Nav-button {
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(111,45,253,1) 100%);
+}
