@@ -1,19 +1,24 @@
 import './styles/Main.css';
 import character from './main.png';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function Main() {
     const [gweiCount, setGwei] = useState(0);
+    const ws = useRef(null);
 
     useEffect(() => { 
-        console.log('Component mounted')
-        const timer = setInterval(async () => {
-            const { data } = await axios.get("https://random-data-api.com/api/app/random_app");
-            setGwei(data.id);
-        }, 6000);
+        console.log('Component mounted');
+        ws.current = new WebSocket('wss://gwie-chan-api.herokuapp.com/');
+        ws.current.onopen = () => console.log("ws opened");
+        ws.current.onmessage = e => {
+            let wsData = JSON.parse(e.data);
+            let { unconfirmed_count } = wsData;
+            setGwei(unconfirmed_count);
+        }
 
-        return () => clearInterval(timer);
+        return () =>  {
+            ws.current.close();
+        };
     }, []);
 
     return(
@@ -21,7 +26,7 @@ function Main() {
             <div className="Main-body">
                 <div className="Main-talk-bubble tri-right round talk-bubble-border right-top">
                     <div className="talk-text">
-                        <p>Gwei updates occur every 60 seconds</p>
+                        <p>Gwei updates occur every 55 seconds</p>
                     </div>
                 </div>
                 <img src={character} className="Main-logo" alt="logo" />
