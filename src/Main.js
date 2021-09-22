@@ -13,7 +13,6 @@ function Main() {
         ws.current.onmessage = e => {
             let wsData = JSON.parse(e.data);
             let { unconfirmed_count } = wsData;
-            console.log(JSON.stringify(wsData));
             setGwei(unconfirmed_count);
         }
 
